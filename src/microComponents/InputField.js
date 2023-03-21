@@ -1,9 +1,9 @@
-function InputField({type = "text", onChange, placeholder}){
-    return (
-        <div>
-            <input type={type} placeholder={placeholder} onChange={onChange}/>
-        </div>
-    )
-}
+const InputField = ({ type = "text", onChange, placeholder }) => {
+	return (
+		<>
+			<input type={type} placeholder={placeholder} onChange={onChange} />
+		</>
+	);
+};
 
 export default InputField;

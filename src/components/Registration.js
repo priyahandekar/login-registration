@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import InputField from "../microComponents/InputField";
 import { validateEmail, validatePassword } from "../utils/common";
 
-const EventList = () => {
+const Registration = () => {
 	const [inputFields, setInputFields] = useState({
 		email: "",
 		password: "",
@@ -38,4 +38,4 @@ const EventList = () => {
 	);
 };
 
-export default EventList;
+export default Registration;
