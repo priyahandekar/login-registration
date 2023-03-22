@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import InputField from "../microComponents/InputField";
+import { Link } from "react-router-dom";
 import { validateEmail, validatePassword } from "../utils/common";
+import { registerUser } from "../slices/loginRegistrationSlice";
+import { useDispatch } from "react-redux";
 
 const Registration = () => {
 	const [inputFields, setInputFields] = useState({
@@ -8,15 +11,21 @@ const Registration = () => {
 		password: "",
 		username: "",
 	});
-	const submitRegistration = () => {};
+	const dispatch = useDispatch();
+
+	const submitRegistration = (e) => {
+		e.stopPropagation();
+		e.preventDefault();
+		dispatch(registerUser(inputFields));
+	};
 
 	const handleInput = (field, value) => {
 		setInputFields({ ...inputFields, [field]: value });
 	};
 
 	return (
-		<div>
-			<form onSubmit={() => submitRegistration()}>
+		<div className="auth-form-container">
+			<form className="register-form" onSubmit={(e) => submitRegistration(e)}>
 				<InputField
 					type="text"
 					placeholder="Enter Username"
@@ -32,8 +41,15 @@ const Registration = () => {
 					placeholder="Enter Password"
 					onChange={(e) => handleInput(e.target.value, "password")}
 				/>
-				<button type="submit">SUBMIT</button>
+				<button type="submit">Register</button>
 			</form>
+			<div>
+				<Link to="/">
+					<button className="link-btn">
+						Already have an account? Login here.
+					</button>
+				</Link>
+			</div>
 		</div>
 	);
 };

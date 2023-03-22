@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import InputField from "../microComponents/InputField";
+import { updateEvent, deleteEvent } from "../slices/eventSlice";
 import { validateEmail, validatePassword } from "../utils/common";
 
 const EventList = () => {
