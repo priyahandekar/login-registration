@@ -24,10 +24,9 @@ const initialValue = {
 	userList: getInitialUsers(),
 	loggedInUser: getLoggedInUser(),
 };
-console.log(initialValue.userList, "slice register");
 
 export const loginRegistrationSlice = createSlice({
-	name: "loginRegister",
+	name: "loginRegistration",
 	initialState: initialValue,
 	reducers: {
 		registerUser: (state, action) => {
@@ -52,17 +51,17 @@ export const loginRegistrationSlice = createSlice({
 			}
 		},
 		loginUser: (state, action) => {
-			const eventList = window.localStorage.getItem("eventList");
-			if (eventList) {
-				const todoListArr = JSON.parse(eventList);
+			const userList = window.localStorage.getItem("userList");
+			if (userList) {
+				const todoListArr = JSON.parse(userList);
 				todoListArr.forEach((todo) => {
 					if (todo.id === action.payload.id) {
-						todo.status = action.payload.status;
-						todo.title = action.payload.title;
+						todo.status = action.payload.email;
+						todo.title = action.payload.password;
 					}
 				});
-				window.localStorage.setItem("eventList", JSON.stringify(todoListArr));
-				state.eventList = [...todoListArr];
+				window.localStorage.setItem("userList", JSON.stringify(todoListArr));
+				state.userList = [...todoListArr];
 			}
 		},
 	},

@@ -49,6 +49,30 @@ button {
 	text-decoration: underline;
 }
 
+.edit,
+.delete {
+	padding: 10px;
+	margin: 5px;
+}
+
+table {
+	border-collapse: separate;
+	border-spacing: 0 15px;
+}
+
+th {
+	background-color: indigo;
+	color: white;
+}
+
+th,
+td {
+	width: 150px;
+	text-align: center;
+	border: 1px solid black;
+	padding: 5px;
+}
+
 @media screen and (min-width: 600px) {
 	.auth-form-container {
 		padding: 5rem;

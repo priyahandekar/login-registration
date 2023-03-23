@@ -1,40 +1,47 @@
 import React, { useState } from "react";
+import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 import InputField from "../microComponents/InputField";
-import { updateEvent, deleteEvent } from "../slices/eventSlice";
+
 import { validateEmail, validatePassword } from "../utils/common";
+import Event from "./Event";
+import EventForm from "./EventForm";
 
 const EventList = () => {
-	const [inputFields, setInputFields] = useState({
-		email: "",
-		password: "",
-		username: "",
-	});
-	const submitRegistration = () => {};
-
-	const handleInput = (field, value) => {
-		setInputFields({ ...inputFields, [field]: value });
+	const { id } = useParams();
+	console.log(id, "id is here");
+	const [updateModalOpen, setUpdateModalOpen] = useState(false);
+	const [eventDetails, setEvent] = useState({});
+	const events = useSelector((state) => state.event.eventList);
+	const eventList = events?.filter((item) => item.userId === id);
+	const handleEdit = (eventInfo) => {
+		console.log(eventInfo, "edit event");
+		setEvent(eventInfo);
+		setUpdateModalOpen(true);
 	};
-
 	return (
 		<div>
-			<form onSubmit={() => submitRegistration()}>
-				<InputField
-					type="text"
-					placeholder="Enter Username"
-					onChange={(e) => handleInput(e.target.value, "username")}
-				/>
-				<InputField
-					type="email"
-					placeholder="Enter Email"
-					onChange={(e) => handleInput(e.target.value, "email")}
-				/>
-				<InputField
-					type="password"
-					placeholder="Enter Password"
-					onChange={(e) => handleInput(e.target.value, "password")}
-				/>
-				<button type="submit">SUBMIT</button>
-			</form>
+			<EventForm
+				eventDetails={eventDetails}
+				type="edit"
+				visible={updateModalOpen}
+			/>
+			<table>
+				<th>Event Name</th>
+				<th>Description</th>
+				<th>Date</th>
+				<th>Booking</th>
+				<th>Actions</th>
+				{eventList &&
+					eventList.length &&
+					eventList.map((event) => (
+						<Event
+							key={event.id}
+							eventDetails={event}
+							handleEdit={handleEdit}
+						/>
+					))}
+			</table>
 		</div>
 	);
 };

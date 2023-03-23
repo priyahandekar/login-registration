@@ -1,7 +1,13 @@
-const InputField = ({ type = "text", onChange, placeholder }) => {
+const InputField = ({ type = "text", onChange, placeholder, defaultValue }) => {
+	console.log(defaultValue, "defaultValue");
 	return (
 		<>
-			<input type={type} placeholder={placeholder} onChange={onChange} />
+			<input
+				type={type}
+				placeholder={placeholder}
+				onChange={onChange}
+				defaultValue={defaultValue}
+			/>
 		</>
 	);
 };

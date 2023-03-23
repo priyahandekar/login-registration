@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import InputField from "../microComponents/InputField";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { validateEmail, validatePassword } from "../utils/common";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../slices/loginRegistrationSlice";
@@ -8,19 +8,35 @@ import { loginUser } from "../slices/loginRegistrationSlice";
 const Login = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const [errorState, setErrorState] = useState(false);
 	const dispatch = useDispatch();
-	const submitLogin = () => {
-		dispatch(
-			loginUser({
-				email,
-				password,
-			})
-		);
+	const navigate = useNavigate();
+
+	const submitLogin = (e) => {
+		e.stopPropagation();
+		e.preventDefault();
+
+		const userList = window.localStorage.getItem("userList");
+		if (userList) {
+			const userListArr = JSON.parse(userList);
+			const user = userListArr.find((item) => item.email === email);
+			if (user.password === password) {
+				dispatch(
+					loginUser({
+						email,
+						id: user.id,
+					})
+				);
+				navigate(`/events/${user.id}`);
+			} else {
+				setErrorState(true);
+			}
+		}
 	};
 
 	return (
 		<div className="auth-form-container">
-			<form className="login-form" onSubmit={() => submitLogin()}>
+			<form className="login-form" onSubmit={(e) => submitLogin(e)}>
 				<label htmlFor="email">Email</label>
 				<InputField
 					type="email"

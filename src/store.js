@@ -4,7 +4,7 @@ import loginRegistrationReducer from "./slices/loginRegistrationSlice";
 
 const store = configureStore({
 	reducer: {
-		events: eventReducer,
+		event: eventReducer,
 		loginRegistration: loginRegistrationReducer,
 	},
 });

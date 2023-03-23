@@ -1,19 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { events } from "../constants/events";
 
 const getInitialEvents = () => {
-	// getting todo list
-	const localTodoList = window.localStorage.getItem("eventList");
-	// if todo list is not empty
-	if (localTodoList) {
-		return JSON.parse(localTodoList);
+	// window.localStorage.clear();
+	// getting event list
+	const localEventList = window.localStorage.getItem("eventList");
+	// if event list is not empty
+	if (localEventList) {
+		return JSON.parse(localEventList);
 	}
-	window.localStorage.setItem("eventList", []);
+	window.localStorage.setItem("eventList", JSON.stringify(events));
 	return [];
 };
 
 const initialValue = {
 	filterStatus: "all",
-	eventList: [],
+	eventList: getInitialEvents(),
 };
 
 export const eventSlice = createSlice({
@@ -45,10 +47,10 @@ export const eventSlice = createSlice({
 			const eventList = window.localStorage.getItem("eventList");
 			if (eventList) {
 				const todoListArr = JSON.parse(eventList);
-				todoListArr.forEach((todo) => {
-					if (todo.id === action.payload.id) {
-						todo.status = action.payload.status;
-						todo.title = action.payload.title;
+				todoListArr.forEach((event) => {
+					if (event.id === action.payload.id) {
+						event.status = action.payload.status;
+						event.title = action.payload.title;
 					}
 				});
 				window.localStorage.setItem("eventList", JSON.stringify(todoListArr));
@@ -56,16 +58,17 @@ export const eventSlice = createSlice({
 			}
 		},
 		deleteEvent: (state, action) => {
+			console.log(action.payload, "delete");
 			const eventList = window.localStorage.getItem("eventList");
 			if (eventList) {
-				const todoListArr = JSON.parse(eventList);
-				todoListArr.forEach((todo, index) => {
-					if (todo.id === action.payload) {
-						todoListArr.splice(index, 1);
+				const eventListArr = JSON.parse(eventList);
+				eventListArr.forEach((event, index) => {
+					if (event.id === action.payload) {
+						eventListArr.splice(index, 1);
 					}
 				});
-				window.localStorage.setItem("eventList", JSON.stringify(todoListArr));
-				state.eventList = todoListArr;
+				window.localStorage.setItem("eventList", JSON.stringify(eventListArr));
+				state.eventList = eventListArr;
 			}
 		},
 		updateFilterStatus: (state, action) => {

@@ -4,15 +4,18 @@ import { addEvent } from "../slices/eventSlice";
 import { useDispatch } from "react-redux";
 import { validateEmail, validatePassword } from "../utils/common";
 
-const EventForm = ({ type = "add", event, visible }) => {
+const EventForm = ({ type = "add", eventDetails = {}, visible }) => {
+	const { eventName = "", description = "" } = eventDetails;
+	console.log("eventform", eventName, description, eventDetails);
+
 	const dispatch = useDispatch();
 	const [inputFields, setInputFields] = useState({
-		eventName: "",
-		description: "",
-		eventDate: "",
-		bookingType: "",
-		acceptConditions: false,
-		price: "",
+		eventName: eventName || "",
+		description: description || "",
+		eventDate: eventDetails?.eventDate || "",
+		bookingType: eventDetails?.bookingType || "",
+		acceptConditions: eventDetails?.acceptConditions || false,
+		price: eventDetails?.price || "",
 	});
 
 	const submitEvent = (e) => {
@@ -37,16 +40,18 @@ const EventForm = ({ type = "add", event, visible }) => {
 						<InputField
 							type="text"
 							placeholder="Enter Name"
+							defaultValue={inputFields.eventName}
 							onChange={(e) => handleChange(e.target.value, "eventName")}
 						/>
 					</label>
 				</>
 				<>
 					<label>
-						Date:
+						Event Date:{" "}
 						<InputField
 							type="date"
 							placeholder="Select Date"
+							defaultValue={inputFields.eventDate}
 							onChange={(e) => handleChange(e.target.value, "eventDate")}
 						/>
 					</label>
@@ -57,6 +62,7 @@ const EventForm = ({ type = "add", event, visible }) => {
 						<InputField
 							type="text"
 							placeholder="Enter Description"
+							defaultValue={inputFields.description}
 							onChange={(e) => handleChange(e.target.value, "description")}
 						/>
 					</label>
@@ -67,6 +73,7 @@ const EventForm = ({ type = "add", event, visible }) => {
 						<InputField
 							type="number"
 							placeholder="Enter Price"
+							defaultValue={inputFields.price}
 							onChange={(e) => handleChange(e.target.value, "price")}
 						/>
 					</label>
@@ -80,10 +87,20 @@ const EventForm = ({ type = "add", event, visible }) => {
 								handleChange(e.target.value, "bookingType");
 							}}
 						>
-							<input type="radio" value="normal" name="booking" /> Normal
-							Booking
-							<input type="radio" value="premium" name="booking" /> Premium
-							Booking
+							<input
+								type="radio"
+								value="normal"
+								name="booking"
+								checked={inputFields.bookingType === "normal"}
+							/>{" "}
+							Normal Booking
+							<input
+								type="radio"
+								value="premium"
+								name="booking"
+								checked={inputFields.bookingType === "premium"}
+							/>{" "}
+							Premium Booking
 						</div>
 					</label>
 				</>

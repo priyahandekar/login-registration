@@ -1,1 +1,54 @@
-export const events = [{}];
+import { v4 as uuidv4 } from "uuid";
+
+export const events = [
+	{
+		eventName: "Dance1",
+		description: "exercise1",
+		eventDate: "2023-03-12",
+		bookingType: "premium",
+		acceptConditions: true,
+		price: "23",
+		id: uuidv4(),
+		userId: "ee84579b-b450-4762-a6fa-68a6c441e78",
+	},
+	{
+		eventName: "Dance",
+		description: "exercise",
+		eventDate: "2023-03-12",
+		bookingType: "premium",
+		acceptConditions: true,
+		price: "23",
+		id: uuidv4(),
+		userId: "ee84579b-b450-4762-a6fa-68a6c441e748",
+	},
+	{
+		eventName: "Dance",
+		description: "exercise",
+		eventDate: "2023-03-12",
+		bookingType: "premium",
+		acceptConditions: true,
+		price: "23",
+		id: uuidv4(),
+		userId: "ee84579b-b450-4762-a6fa-68a6c441e748",
+	},
+	{
+		eventName: "Dance",
+		description: "exercise",
+		eventDate: "2023-03-12",
+		bookingType: "premium",
+		acceptConditions: true,
+		price: "23",
+		id: uuidv4(),
+		userId: "ee84579b-b450-4762-a6fa-68a6c441e748",
+	},
+	{
+		eventName: "Dance",
+		description: "exercise",
+		eventDate: "2023-03-12",
+		bookingType: "premium",
+		acceptConditions: true,
+		price: "23",
+		id: uuidv4(),
+		userId: "ee84579b-b450-4762-a6fa-68a6c441e748",
+	},
+];
