@@ -1,5 +1,3 @@
-import { v4 as uuidv4 } from "uuid";
-
 export const events = [
 	{
 		eventName: "Dance1",
@@ -8,7 +6,7 @@ export const events = [
 		bookingType: "premium",
 		acceptConditions: true,
 		price: "23",
-		id: uuidv4(),
+		id: "1",
 		userId: "ee84579b-b450-4762-a6fa-68a6c441e78",
 	},
 	{
@@ -18,8 +16,8 @@ export const events = [
 		bookingType: "premium",
 		acceptConditions: true,
 		price: "23",
-		id: uuidv4(),
-		userId: "ee84579b-b450-4762-a6fa-68a6c441e748",
+		id: "2",
+		userId: "48519156-13c0-4658-a1f5-b82bd13ede4f",
 	},
 	{
 		eventName: "Dance",
@@ -28,8 +26,8 @@ export const events = [
 		bookingType: "premium",
 		acceptConditions: true,
 		price: "23",
-		id: uuidv4(),
-		userId: "ee84579b-b450-4762-a6fa-68a6c441e748",
+		id: "3",
+		userId: "48519156-13c0-4658-a1f5-b82bd13ede4f",
 	},
 	{
 		eventName: "Dance",
@@ -38,8 +36,8 @@ export const events = [
 		bookingType: "premium",
 		acceptConditions: true,
 		price: "23",
-		id: uuidv4(),
-		userId: "ee84579b-b450-4762-a6fa-68a6c441e748",
+		id: "4",
+		userId: "48519156-13c0-4658-a1f5-b82bd13ede4f",
 	},
 	{
 		eventName: "Dance",
@@ -48,7 +46,7 @@ export const events = [
 		bookingType: "premium",
 		acceptConditions: true,
 		price: "23",
-		id: uuidv4(),
-		userId: "ee84579b-b450-4762-a6fa-68a6c441e748",
+		id: "5",
+		userId: "48519156-13c0-4658-a1f5-b82bd13ede4f",
 	},
 ];

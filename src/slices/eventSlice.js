@@ -24,24 +24,24 @@ export const eventSlice = createSlice({
 	reducers: {
 		addEvent: (state, action) => {
 			console.log(action.payload, "slice");
-			// state.eventList.push(action.payload);
-			// const eventList = window.localStorage.getItem("eventList");
-			// if (eventList) {
-			// 	const todoListArr = JSON.parse(eventList);
-			// 	todoListArr.push({
-			// 		...action.payload,
-			// 	});
-			// 	window.localStorage.setItem("eventList", JSON.stringify(todoListArr));
-			// } else {
-			// 	window.localStorage.setItem(
-			// 		"eventList",
-			// 		JSON.stringify([
-			// 			{
-			// 				...action.payload,
-			// 			},
-			// 		])
-			// 	);
-			// }
+			state.eventList.push(action.payload);
+			const eventList = window.localStorage.getItem("eventList");
+			if (eventList) {
+				const todoListArr = JSON.parse(eventList);
+				todoListArr.push({
+					...action.payload,
+				});
+				window.localStorage.setItem("eventList", JSON.stringify(todoListArr));
+			} else {
+				window.localStorage.setItem(
+					"eventList",
+					JSON.stringify([
+						{
+							...action.payload,
+						},
+					])
+				);
+			}
 		},
 		updateEvent: (state, action) => {
 			const eventList = window.localStorage.getItem("eventList");

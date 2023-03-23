@@ -69,8 +69,32 @@ th,
 td {
 	width: 150px;
 	text-align: center;
-	border: 1px solid black;
+	border: 1px solid white;
 	padding: 5px;
+}
+
+.add-logout {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px;
+}
+
+.logout,
+.add {
+	padding: 7px;
+}
+
+.submit,
+.cancel {
+	padding: 7px;
+	margin: 5px;
+}
+
+.radio {
+	color: white;
+	display: flex;
+	align-items: center;
 }
 
 @media screen and (min-width: 600px) {
