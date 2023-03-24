@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { users } from "../constants/users";
 
 const getInitialUsers = () => {
 	const localUserList = window.localStorage.getItem("userList");

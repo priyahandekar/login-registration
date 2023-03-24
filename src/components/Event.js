@@ -1,10 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
-import InputField from "../microComponents/InputField";
-import { updateEvent, deleteEvent } from "../slices/eventSlice";
-import { validateEmail, validatePassword } from "../utils/common";
-import { events } from "../constants/events";
+import { deleteEvent } from "../slices/eventSlice";
 
 const Event = ({ key, eventDetails, handleEdit }) => {
 	const dispatch = useDispatch();

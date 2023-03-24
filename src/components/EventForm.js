@@ -5,7 +5,6 @@ import { addEvent, updateEvent } from "../slices/eventSlice";
 import { v4 as uuidv4 } from "uuid";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { validateEmail, validatePassword } from "../utils/common";
 
 const EventForm = ({ type, eventDetails = {}, visible, closeModal }) => {
 	const { eventName = "", description = "", acceptConditions } = eventDetails;

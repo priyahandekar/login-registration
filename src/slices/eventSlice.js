@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { events } from "../constants/events";
 
 const getInitialEvents = () => {
 	// window.localStorage.clear();
@@ -9,7 +8,7 @@ const getInitialEvents = () => {
 	if (localEventList) {
 		return JSON.parse(localEventList);
 	}
-	window.localStorage.setItem("eventList", JSON.stringify(events));
+	window.localStorage.setItem("eventList", []);
 	return [];
 };
 

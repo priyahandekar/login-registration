@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import InputField from "../microComponents/InputField";
-import { validateEmail, validatePassword } from "../utils/common";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../slices/loginRegistrationSlice";
 

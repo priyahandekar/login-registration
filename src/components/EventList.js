@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import InputField from "../microComponents/InputField";
-
-import { validateEmail, validatePassword } from "../utils/common";
 import Event from "./Event";
 import EventForm from "./EventForm";
 

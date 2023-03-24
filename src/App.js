@@ -1,11 +1,8 @@
 import "./App.css";
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
-import { useState } from "react";
 
 function App() {
-	const [isLoginClicked, setIsLoginClicked] = useState(true);
-
 	return (
 		<div className="App">
 			<Outlet />
