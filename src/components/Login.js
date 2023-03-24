@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import InputField from "../microComponents/InputField";
+import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
+import InputField from "../microComponents/InputField";
 import { validateEmail, validatePassword } from "../utils/common";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../slices/loginRegistrationSlice";
@@ -8,28 +9,28 @@ import { loginUser } from "../slices/loginRegistrationSlice";
 const Login = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const [errorState, setErrorState] = useState(false);
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
-	const submitLogin = (e) => {
+	const submitLogin = async (e) => {
 		e.stopPropagation();
 		e.preventDefault();
 
 		const userList = window.localStorage.getItem("userList");
 		if (userList) {
-			const userListArr = JSON.parse(userList);
-			const user = userListArr.find((item) => item.email === email);
-			if (user.password === password) {
+			const userListArr = await JSON.parse(userList);
+			const user = userListArr?.find((item) => item.email === email);
+			if (user && user.password === password) {
 				dispatch(
 					loginUser({
 						email,
 						id: user.id,
 					})
 				);
+				toast.success("Logged in Successfully");
 				navigate(`/events/${user.id}`);
 			} else {
-				setErrorState(true);
+				toast.error("Credentials are incorrect");
 			}
 		}
 	};
@@ -44,7 +45,6 @@ const Login = () => {
 					onChange={(e) => setEmail(e.target.value)}
 				/>
 				<label htmlFor="password">Password</label>
-
 				<InputField
 					type="password"
 					placeholder="Enter Password"

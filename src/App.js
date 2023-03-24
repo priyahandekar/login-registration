@@ -1,5 +1,6 @@
 import "./App.css";
 import { Link, Outlet } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 import { useState } from "react";
 
 function App() {
@@ -8,23 +9,14 @@ function App() {
 	return (
 		<div className="App">
 			<Outlet />
-			{/* {isLoginClicked ? (
-				<div>
-					<Link to="/register">
-						<button onClick={() => setIsLoginClicked(!isLoginClicked)}>
-							Don't have an account? Register here.
-						</button>
-					</Link>
-				</div>
-			) : (
-				<div>
-					<Link to="/">
-						<button onClick={() => setIsLoginClicked(!isLoginClicked)}>
-							Already have an account? Login here.
-						</button>
-					</Link>
-				</div>
-			)} */}
+			<Toaster
+				position="bottom-right"
+				toastOptions={{
+					style: {
+						fontSize: "1rem",
+					},
+				}}
+			/>
 		</div>
 	);
 }

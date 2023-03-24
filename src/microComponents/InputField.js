@@ -1,5 +1,10 @@
-const InputField = ({ type = "text", onChange, placeholder, defaultValue }) => {
-	console.log(defaultValue, "defaultValue");
+const InputField = ({
+	type = "text",
+	onChange,
+	placeholder,
+	defaultValue,
+	defaultChecked,
+}) => {
 	return (
 		<>
 			<input
@@ -7,6 +12,7 @@ const InputField = ({ type = "text", onChange, placeholder, defaultValue }) => {
 				placeholder={placeholder}
 				onChange={onChange}
 				defaultValue={defaultValue}
+				defaultChecked={defaultChecked}
 			/>
 		</>
 	);

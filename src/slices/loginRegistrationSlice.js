@@ -3,11 +3,10 @@ import { users } from "../constants/users";
 
 const getInitialUsers = () => {
 	const localUserList = window.localStorage.getItem("userList");
-	console.log(localUserList, "localUserList");
 	if (localUserList) {
-		return localUserList;
+		return JSON.parse(localUserList);
 	}
-	window.localStorage.setItem("userList", JSON.stringify(users));
+	window.localStorage.setItem("userList", []);
 	return [];
 };
 
@@ -32,7 +31,6 @@ export const loginRegistrationSlice = createSlice({
 		registerUser: (state, action) => {
 			state.userList.push(action.payload);
 			const userList = window.localStorage.getItem("userList");
-			console.log(state.userList, userList, "slice register 2");
 			if (userList) {
 				const userListArr = JSON.parse(userList);
 				userListArr.push({
