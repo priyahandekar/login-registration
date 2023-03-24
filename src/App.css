@@ -10,6 +10,12 @@
 	pointer-events: none;
 }
 
+.noEvents {
+	color: white;
+	font-size: 18px;
+	font-weight: 600;
+}
+
 .auth-form-container {
 	display: flex;
 	align-items: center;

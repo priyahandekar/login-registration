@@ -57,7 +57,7 @@ const EventList = () => {
 					closeModal={closeModal}
 				/>
 			)}
-			{eventList && eventList.length > 0 && (
+			{eventList && eventList.length > 0 ? (
 				<table>
 					<thead>
 						<th>Event Name</th>
@@ -76,6 +76,8 @@ const EventList = () => {
 					))}
 					<div style={{ fontWeight: "600" }}>Total Price: {+totalPrice}</div>
 				</table>
+			) : (
+				<div className="noEvents">No Events created</div>
 			)}
 		</div>
 	);
