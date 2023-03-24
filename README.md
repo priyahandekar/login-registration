@@ -11,8 +11,8 @@ In the project directory, you can run:
 If this encounter in any issue, try doing
 ### `npm i`
 
-1. Also in the create Event form, #### Submit button is disabled until you accept the terms and conditions through Checkbox.
-2. I have maintained the userlist and eventlist in #### Localstorage, In case something breaks, try to clear the localstorage \ 
+1. Also in the create Event form, **Submit** button is disabled until you accept the terms and conditions through Checkbox.
+2. I have maintained the userlist and eventlist in **Localstorage**, In case something breaks, try to clear the localstorage \ 
  by window.localStorage.clear() or run on incognito mode.
 
 Runs the app in the development mode.\
