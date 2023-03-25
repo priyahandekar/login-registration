@@ -48,18 +48,8 @@ export const loginRegistrationSlice = createSlice({
 			}
 		},
 		loginUser: (state, action) => {
-			const userList = window.localStorage.getItem("userList");
-			if (userList) {
-				const todoListArr = JSON.parse(userList);
-				todoListArr.forEach((todo) => {
-					if (todo.id === action.payload.id) {
-						todo.status = action.payload.email;
-						todo.title = action.payload.password;
-					}
-				});
-				window.localStorage.setItem("userList", JSON.stringify(todoListArr));
-				state.userList = [...todoListArr];
-			}
+			window.localStorage.setItem("userEmail", action.payload.email);
+			state.loggedInUser = action.payload.email;
 		},
 	},
 });
