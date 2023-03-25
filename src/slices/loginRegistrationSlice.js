@@ -54,6 +54,5 @@ export const loginRegistrationSlice = createSlice({
 	},
 });
 
-export const { loginUser, registerUser, deleteEvent, updateFilterStatus } =
-	loginRegistrationSlice.actions;
+export const { loginUser, registerUser } = loginRegistrationSlice.actions;
 export default loginRegistrationSlice.reducer;

@@ -72,12 +72,8 @@ export const eventSlice = createSlice({
 				state.eventList = eventListArr;
 			}
 		},
-		updateFilterStatus: (state, action) => {
-			state.filterStatus = action.payload;
-		},
 	},
 });
 
-export const { addEvent, updateEvent, deleteEvent, updateFilterStatus } =
-	eventSlice.actions;
+export const { addEvent, updateEvent, deleteEvent } = eventSlice.actions;
 export default eventSlice.reducer;
